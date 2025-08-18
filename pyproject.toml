@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+zip-safe = false
+include-package-data = true
+
+
+[tool.setuptools.package-dir]
+"qt_app_tester" = "./qt_app_tester/qt_app_tester"
+
+[tool.setuptools.dynamic]
+version = {attr = "qt_app_tester.__version__"}
+
+[tool.pytest.ini_options]
+addopts = [
+    "--import-mode=importlib"
+]
+pythonpath = [
+    "qt_app_tester"
+]
+
+[project]
+name = "qt_app_tester"
+description = "test app for writing pyqt pytests"
+authors = [{name = "Jason Pruitt", email = "pruitt.jason8164@gmail.com"}]
+dynamic = ["version"]
+license = {file = 'LICENSE.txt'}
